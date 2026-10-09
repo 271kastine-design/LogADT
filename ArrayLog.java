@@ -18,6 +18,7 @@ public class ArrayLog<T> implements EnhancedLogInterface<T>
     // and assign values to instance variables.
     public ArrayLog(String name)
     {
+        this.name = name;
         // cannot create a generic array object, so has to be cast
         // from an Object back into the generic in order to compile
         this.log = (T[])new Object[4];
@@ -48,7 +49,7 @@ public class ArrayLog<T> implements EnhancedLogInterface<T>
     // Returns true if this list is completely full.
     public boolean isFull()
     {
-        return false;
+        return size == log.length;
     }
 
     // Appends the specified element to the end of this list.
