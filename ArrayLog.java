@@ -26,19 +26,22 @@ public class ArrayLog<T> implements EnhancedLogInterface<T>
     // Returns the name of this StringLog.
     public String getName()
     {
-        return "";
+        return this.name;
     }
 
     // Returns the logical size of this StringLog.
     public int size()
     {
-        
-        return -1;
+        return size;
     }
     
     // Returns true if this list contains no elements.
     public boolean isEmpty()
     {
+        if(size == 0)
+        {
+            return true;
+        }
         return false;
     }
     
@@ -146,6 +149,15 @@ public class ArrayLog<T> implements EnhancedLogInterface<T>
         }
         log[size - 1] = null;
         size--;
+        if(size*2 <= log.length && log.length > 4)
+        {
+            T[] newLog = (T[])new Object[log.length / 2];
+            for(int i = 0; i < size; i++)
+            {
+                newLog[i] = log[i];
+            }
+            log = newLog;
+        }
         return removedElement;
     }
     
@@ -166,5 +178,10 @@ public class ArrayLog<T> implements EnhancedLogInterface<T>
     // Removes all of the elements from this list.
     public void clear()
     {
+        for(int i = 0; i < size; i++)
+        {
+            log[i] = null;
+        }
+        size = 0;
     }
 }
