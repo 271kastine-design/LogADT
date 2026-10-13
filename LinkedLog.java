@@ -14,30 +14,33 @@ public class LinkedLog<T> implements EnhancedLogInterface<T>
 
     public LinkedLog(String name)
     {
+        this.name = name;
+        this.log = null;
+        this.size = 0;
     }
     
     // returns the name of this StringLog
     public String getName()
     {
-        return "";
+        return this.name;
     }
 
     // returns the logical size of this StringLog
     public int size()
     {
-        return -1;
+        return this.size;
     }
     
     // returns true if this list contains no elements
     public boolean isEmpty()
     {
-        return false;
+        return this.size == 0;
     }
     
     // returns true if this list is completely full
     public boolean isFull()
     {
-        return true;
+        return false;
     }
 
     // appends the specified element to the end of this list
